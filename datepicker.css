@@ -1,6 +1,5 @@
 /* 日期组件样式 *//* position:relative; */
 .date {
-    display: inline-block;
     width:149px;
     height:38px;
     line-height: 37px;
