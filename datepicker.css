@@ -1,0 +1,108 @@
+/* 日期组件样式 *//* position:relative; */
+.date {
+    display: inline-block;
+    width:149px;
+    height:38px;
+    line-height: 37px;
+    text-align:left;
+    border:1px solid #ddd;
+    border-radius: 2px;
+    margin-bottom:20px;
+    padding:0 15px;
+    color:#333;
+}
+.itemEdit .address.textBox{
+    max-height: 60px
+}
+.hole-mark{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: #FFF;
+    opacity: 0.1;
+}
+#resume .date-area .date.on+i{
+    background-position-x:0;cursor: text;
+}
+#resume .date-area .date.on{
+    border-top-color: #47C88A;
+    border-left-color: #47C88A;
+    border-right-color: #47C88A;
+}
+.clearfloat:after{
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0
+}
+.riliBox{
+    position: absolute;
+    top: 39px;
+    left: 0;
+    z-index: 10;
+    width: 179px;
+    border: 1px solid #47C88A;
+    border-top-color: #fcfcfc;
+    background-color: #fcfcfc;
+}
+.riliBox .title{
+    border-top:1px solid #DDD;
+    margin: 0 15px;
+    font-size: 16px;
+    height: 45px;
+    line-height: 45px;
+    color:#333333;
+}
+.riliBox .title div{
+    float: left;
+}
+.riliBox .title .this_left{
+    text-align: left;
+    color: #b0b0b0;
+    width: 20%;
+}
+.riliBox .title .tenYears{
+    text-align: center;
+    width: 60%;
+}
+.riliBox .title .this_right{
+    text-align: right;
+    color: #b0b0b0;
+    width: 20%;
+}
+.riliBox .this_left:hover,.tenYears:hover,.this_right:hover{
+    cursor: pointer;
+}
+.riliBox .commonListRL .list li{
+    padding: 4px 2px 14px;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 13px;
+    float: left;
+    width: 25%;
+    list-style-type:none;
+    text-align: center;
+}
+.riliBox .commonListRL .list li:hover{
+    cursor: pointer;
+}
+.riliBox .commonListRL{
+    display: none;
+}
+.riliBox .until-today {
+    display: none;
+    margin: 0 15px;
+    font-size: 14px;
+    height: 33px;
+    line-height: 33px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    box-sizing: border-box;
+}
+.riliBox .until-today:hover {
+    color: #47C88A;
+    cursor: pointer;
+}

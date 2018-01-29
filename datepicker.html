@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="datepicker.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .edit {
+      width: 100%;
+      margin: 120px auto;
+      padding: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="edit">
+  <div class="date"></div>
+  <div id="lv_calender">
+    <!-- 日历组件 -->
+    <div class="riliBox" >
+      <div class="title clearfloat">
+        <div class="this_left  this_leftTen"><</div>
+        <div class="tenYears"><span class="firstYears"></span>-<span class="nestYears"></span></div>
+        <div class="this_right this_rightTen">></div>
+      </div>
+      <div class="YlistBox commonListRL">
+        <ul class="list clearfloat ylist">
+
+        </ul>
+      </div>
+      <div class="MlistBox commonListRL">
+        <ul class="list clearfloat mlist">
+          <li>01</li>
+          <li>02</li>
+          <li>03</li>
+          <li>04</li>
+          <li>05</li>
+          <li>06</li>
+          <li>07</li>
+          <li>08</li>
+          <li>09</li>
+          <li>10</li>
+          <li>11</li>
+          <li>12</li>
+        </ul>
+      </div>
+      <div class="until-today">至&nbsp;今</div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="datepicker.js"></script>
+</body>
+</html>
