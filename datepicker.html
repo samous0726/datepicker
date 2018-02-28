@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link rel="stylesheet" href="datepicker.css">
+  <link rel="stylesheet" href="lib/datepicker.css">
   <style>
     html, body, ul {
       margin: 0;
@@ -54,15 +54,80 @@
   </div>
 </div>
 
-<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="datepicker.js"></script>
+<script type="text/javascript" src="lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="lib/datepicker.js"></script>
+<script type="text/javascript" src="lib/z.js"></script>
 <script>
 
- var $doc = $(document);
- $doc.on('click', '.date', function () {
-     $('.riliBox').slideDown(100);
-     datePicker.init()
- })
+ // 日历组件
+ var $doc = $( document );
+ $doc.on('click', '.date', function (e) {
+     var $this = $(this).find('.date'),
+         $parents = $this.parents('.itemEdit').length > 0 ? $this.parents('.itemEdit') :  $this.parents('.step-area'),
+         area = $this.siblings('.picker-area'),
+         label = $this.siblings('label');
+
+     // 初始化日期组件
+     var choose = $this.html(),
+         toNow = Z.isContains($this.attr('class'), 'end');
+     datePicker.init( area, {
+         year: choose === '至今' || !choose ? undefined : choose.slice(0, 4),
+         load: 'userResumeDatepicker',
+         toNow: toNow
+     });
+
+     // 如果选定的是结束时间 绑定至今事件
+     if ( toNow ) {
+         // 选择结束时间
+         $doc.one('click', '.until-today', function (event) {
+             event.stopPropagation();
+             // 删除透明层
+             $('.hole-mark').remove();
+             area.siblings('label').css({'color': '#B0B0B0'});
+
+             // 设定选中值
+             area.html('').siblings('.carry-input').removeClass('on').html( '至今' ).siblings('input').val( 'now' );
+         });
+     }
+
+     // 取消该输入框组其他输入框的错误提示
+     $this.removeAttr('style').addClass('on').siblings('em').hide().siblings('span.carry-input,input').removeAttr('style');
+     $parents.find('em').hide().siblings('span.carry-input,input,textarea').removeAttr('style');
+
+     $('.hole-mark').remove();
+     $('body').append('<div class="hole-mark"></div>');
+
+     label.css({'color': '#47c88a'});
+
+     $($doc).one("click", '.hole-mark', function(){
+         label.css({'color': '#B0B0B0'});
+         // 箭头朝下
+         $this.removeClass('on');
+         // 清空内容
+         area.html('');
+         // 删除透明层
+         $('.hole-mark').remove();
+     });
+ });
+
+ //点击月份确定选择
+ $doc.on("click",".mlist li",function(e) {
+     e.stopPropagation();
+     var thisYue=$(this).html(),
+         thisNian=$(".backYears").html(),
+         value = thisNian + '-' + thisYue,
+         area = $(this).parents('.picker-area');
+
+     // 删除透明层
+     $('.hole-mark').remove();
+     area.siblings('label').css({'color': '#B0B0B0'});
+
+     // !!! 移除至今事件
+     $doc.off('click', '.until-today');
+
+     // 设定选中值
+     area.html('').siblings('.carry-input').removeClass('on').html( value ).siblings('input').val( value );
+ });
 
 
 
